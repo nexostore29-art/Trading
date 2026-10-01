@@ -1,0 +1,10 @@
+# Secretos — nunca al repo
+.env
+*.env
+config.private.json
+**/user_data/config.private.json
+# Datos y artefactos de Freqtrade
+**/user_data/data/
+**/user_data/backtest_results/
+**/user_data/*.sqlite
+__pycache__/
