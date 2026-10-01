@@ -1,0 +1,27 @@
+{
+  "fuente": "https://github.com/ff137/bitstamp-btcusd-minute-data",
+  "activo": "BTC/USD Bitstamp (proxy de BTC/USDT Binance)",
+  "nota": "Regenerar con: python research/prepare_data.py. Velas de volumen 0 (relleno) se descartan.",
+  "archivos": {
+    "processed/BTCUSD_1d.csv": {
+      "bytes": 378916,
+      "sha256": "8163e4c390e3c2b4624c1629bbd08f20d9527e72b34c02636299a9d0ccf6933d"
+    },
+    "processed/BTCUSD_1h.csv": {
+      "bytes": 8770246,
+      "sha256": "af40ecf1cab98134e3f2293880ad7d65d29b5b6c350a3dd906552c2e6be7545a"
+    },
+    "processed/BTCUSD_4h.csv": {
+      "bytes": 2237204,
+      "sha256": "12b4f482a1a9ada37a8d214b8869d25b7a211977d1c362b5a08f16c7103a3ff4"
+    },
+    "raw/btcusd_bitstamp_1min_2012-2025.csv.gz": {
+      "bytes": 93787798,
+      "sha256": "1be152060b39327b669cbed236eeb283191fadaf3862f76c1e974be54ceb1a20"
+    },
+    "raw/btcusd_bitstamp_1min_latest.csv": {
+      "bytes": 50801128,
+      "sha256": "ce3372ec7bd44bf09f318ddad93f6b3d0a8a2b593275e0d8ff53ce3c3338bc31"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "definido": "2026-10-01, antes de conocer resultados (commit previo a la primera corrida con estos criterios)",
+  "nota": "No modificar junto con estrategias. Un cambio de criterios es una versión nueva con su propio commit y justificación.",
+  "promocion_a_paper": {
+    "dsr_min": 0.95,
+    "max_dd_min": -0.15,
+    "min_trades_oos": 30,
+    "sharpe_mayor_que_buy_and_hold": true
+  },
+  "viabilidad_economica": {
+    "costos_fijos_anuales_usd": 72,
+    "detalle_costos": "VPS ~6 USD/mes. No incluye suscripción de Claude (ya pagada por el usuario) ni impuestos (~15% CR sobre ganancias).",
+    "impuesto_ganancias": 0.15,
+    "ganancia_neta_anual_minima_usd": 0
+  },
+  "rechazo_automatico": [
+    "La ganancia desaparece al duplicar costos (comisión + slippage)",
+    "Solo funciona en una combinación estrecha de parámetros (vecinos ±1 paso con Sharpe < 50% del elegido)",
+    "Integridad de datos dudosa"
+  ]
+}

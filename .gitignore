@@ -8,3 +8,5 @@ config.private.json
 **/user_data/backtest_results/
 **/user_data/*.sqlite
 __pycache__/
+data/raw/
+data/processed/
