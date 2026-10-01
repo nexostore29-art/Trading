@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "definido": "2026-10-01, antes de conocer resultados (commit previo a la primera corrida con estos criterios)",
   "nota": "No modificar junto con estrategias. Un cambio de criterios es una versión nueva con su propio commit y justificación.",
   "promocion_a_paper": {
@@ -18,5 +18,42 @@
     "La ganancia desaparece al duplicar costos (comisión + slippage)",
     "Solo funciona en una combinación estrecha de parámetros (vecinos ±1 paso con Sharpe < 50% del elegido)",
     "Integridad de datos dudosa"
-  ]
+  ],
+  "cambios_v2": "2026-10-01: se agregan criterios del piloto y de escalado a pedido del usuario ($50 = piloto de validación; escalar a $500/$1000 solo si se confirma). No cambia ningún criterio de promoción v1. Definidos antes de cualquier operación real o paper.",
+  "piloto_50": {
+    "proposito": "Validar ejecución, costos reales, risk engine, kill switch y operación continua. No demuestra rentabilidad por sí solo.",
+    "requisito_para_iniciar_micro_live": "Estrategia que pasó promocion_a_paper + 4 semanas de paper sin incidentes graves. Excepción: el usuario puede autorizar explícitamente un piloto de infraestructura con la mejor candidata no promovida, rotulado como tal en el registro.",
+    "capital_usd": 50,
+    "riesgo_por_operacion_pct": 1.0,
+    "duracion_minima_semanas": 8,
+    "min_operaciones": 30,
+    "parada_inmediata": [
+      "drawdown >= 15% (capital < 42.5 USD)",
+      "cualquier orden fuera de límites del risk engine",
+      "descuadre de posiciones en reconciliación",
+      "slippage medio > 3x lo supuesto durante 2 semanas"
+    ]
+  },
+  "escalado": {
+    "a_500_usd": {
+      "todos_obligatorios": [
+        "La estrategia pasó promocion_a_paper (DSR > 0.95, costos x2, DD, vs buy & hold)",
+        "Piloto >= 8 semanas y >= 30 operaciones reales",
+        "Señales live idénticas al backtest corrido sobre el mismo periodo (>= 95% de coincidencia)",
+        "Slippage + comisiones reales <= 1.5x lo supuesto en el backtest",
+        "Retorno del piloto dentro del rango 5%-95% de la distribución Monte Carlo del backtest para el mismo nº de operaciones",
+        "Cero incidentes de riesgo no resueltos; kill switch probado al menos una vez a propósito",
+        "Max drawdown del piloto < 15%"
+      ]
+    },
+    "a_1000_usd": {
+      "todos_obligatorios": [
+        "Criterios a_500_usd siguen cumpliéndose",
+        ">= 3 meses operando con 500 USD y >= 60 operaciones adicionales",
+        "PSR(SR>0) del registro live acumulado > 0.90",
+        "Desempeño acumulado live no peor que el percentil 10 del backtest"
+      ]
+    },
+    "regla": "Nunca escalar por una buena semana. Si un criterio falla: mantener o reducir capital según references/evaluacion.md."
+  }
 }
