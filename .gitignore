@@ -10,3 +10,10 @@ config.private.json
 __pycache__/
 data/raw/
 data/processed/
+.venv/
+risk/state/
+risk/logs/
+freqtrade/user_data/logs/
+freqtrade/user_data/*.sqlite*
+freqtrade/user_data/config.private.json
+.pytest_cache/

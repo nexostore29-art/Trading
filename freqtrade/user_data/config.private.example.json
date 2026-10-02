@@ -1,0 +1,24 @@
+{
+  "_nota": "Copiar a config.private.json (ignorado por git) y completar. NUNCA commitear secretos. Para el piloto real: key de Binance SIN permiso de retiro, con whitelist de IP.",
+  "exchange": {
+    "key": "",
+    "secret": ""
+  },
+  "telegram": {
+    "enabled": false,
+    "token": "",
+    "chat_id": ""
+  },
+  "api_server": {
+    "enabled": true,
+    "listen_ip_address": "0.0.0.0",
+    "listen_port": 8080,
+    "verbosity": "error",
+    "enable_openapi": false,
+    "jwt_secret_key": "GENERAR: python -c 'import secrets;print(secrets.token_hex(32))'",
+    "CORS_origins": [],
+    "username": "CAMBIAR",
+    "password": "GENERAR",
+    "ws_token": "GENERAR"
+  }
+}

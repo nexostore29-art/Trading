@@ -1,0 +1,28 @@
+# Bot (Freqtrade, dry-run por defecto) + watchdog de riesgo independiente.
+# Uso: docker compose up -d   ·   logs: docker compose logs -f
+services:
+  freqtrade:
+    image: freqtradeorg/freqtrade:2026.9
+    restart: unless-stopped
+    volumes:
+      - ./:/trading
+    working_dir: /trading
+    ports:
+      - "127.0.0.1:8080:8080"     # API solo accesible desde el propio servidor
+    command: >
+      trade
+      --userdir /trading/freqtrade/user_data
+      --config /trading/freqtrade/user_data/config.json
+      --config /trading/freqtrade/user_data/config.private.json
+      --strategy DonchianTrend
+      --logfile /trading/freqtrade/user_data/logs/freqtrade.log
+
+  watchdog:
+    build: { context: ., dockerfile: risk/Dockerfile }
+    restart: unless-stopped
+    depends_on: [freqtrade]
+    volumes:
+      - ./risk:/trading/risk
+    env_file: [.env]
+    environment:
+      FT_API_URL: http://freqtrade:8080/api/v1

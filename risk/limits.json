@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "nota": "Límites duros del Risk Engine. Solo un humano los cambia, con commit propio. Claude no puede modificarlos ni saltarlos (ver .claude/skills/trading-expert/references/gobernanza.md).",
+  "riesgo_por_operacion_pct": 1.0,
+  "riesgo_por_operacion_max_pct": 2.0,
+  "exposicion_max_activo_pct": 30.0,
+  "exposicion_max_btc_eth_pct": 50.0,
+  "riesgo_abierto_total_max_pct": 5.0,
+  "perdida_diaria_max_pct": 3.0,
+  "drawdown_max_pct": 15.0,
+  "apalancamiento_max": 1.0,
+  "orden_minima_usd": 5.0,
+  "desvio_precio_max_pct": 2.0,
+  "datos_obsoletos_max_velas": 2,
+  "pares_permitidos": ["BTC/USDT"]
+}
